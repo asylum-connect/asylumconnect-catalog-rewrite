@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
+    "start": "NODE_ENV=production next start -p $PORT",
     "test": "NODE_ENV=jest jest",
     "test:coverage": "NODE_ENV=jest jest --coverage"
   },
