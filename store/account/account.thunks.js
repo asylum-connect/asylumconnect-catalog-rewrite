@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Cookie from 'js-cookie';
 import { accountActions } from '.';
 
 const login = (username, password) => async (dispatch) => {
@@ -12,7 +13,8 @@ const login = (username, password) => async (dispatch) => {
     .then((response) => {
       if (response.data.jwt) {
         dispatch(accountActions.loginSuccess(response.data.jwt));
-        // TODO: store the jwt in a cookie so maintain a session
+        // TODO: store the jwt (java web token) in a cookie so maintain a session
+        Cookie.set('jwt', response.data.jwt);
       } else {
         dispatch(accountActions.loginFailure(response.data.message));
       }
