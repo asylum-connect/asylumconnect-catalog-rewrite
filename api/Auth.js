@@ -22,6 +22,11 @@ const Auth = () => ({
         return response.data;
       })
       .catch((error) => {
+        if (process.env.development && error.status === 404) {
+          return {
+            jwt: 'fake token for dev',
+          };
+        }
         return error;
       });
   },
