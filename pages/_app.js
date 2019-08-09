@@ -12,9 +12,15 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 class AsylumConnect extends App {
-  static async getInitialProps() {
-    // Where we'll do async calls for initial data
-    // Also where we'll check the cookie for a valid JWT
+  static async getInitialProps({ Component, ctx }) {
+    // we can dispatch from here too
+    ctx.store.dispatch({ type: 'FOO', payload: 'foo' });
+
+    const pageProps = Component.getInitialProps
+      ? await Component.getInitialProps(ctx)
+      : {};
+
+    return { pageProps };
   }
 
   componentDidMount() {

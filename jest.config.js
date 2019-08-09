@@ -14,7 +14,7 @@ module.exports = {
     '!server.js',
     '!nextjs-server.js',
     '**/*.{js,jsx}',
-    '!pages/**',
+    'pages/**',
     '!coverage/**',
   ],
 };

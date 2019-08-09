@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import jsHttpCookie from 'cookie';
 import LoginForm from './LoginForm';
 import { accountThunks } from '../../store/account';
 
@@ -18,19 +17,6 @@ class Login extends PureComponent {
       username: '',
       password: '',
     };
-  }
-
-  static async getInitialProps({ req }) {
-    const initialProps = {};
-    if (req && req.headers) {
-      const cookies = req.headers.cookie;
-      if (typeof cookies === 'string') {
-        const cookiesJSON = jsHttpCookie.parse(cookies);
-        // jwt means "java web token"
-        initialProps.jwt = cookiesJSON.jwt;
-      }
-    }
-    return initialProps;
   }
 
   onSubmit = async (e) => {
